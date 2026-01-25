@@ -1,0 +1,90 @@
+INFO :      [INIT]
+
+INFO :      test accuracy on global testset: 0.4947
+INFO :      test accuracy on client1 testset: 0.5023
+INFO :      test accuracy on client2 testset: 0.4996
+INFO :      test accuracy on client3 testset: 0.4903
+
+INFO :      [ROUND 1]
+
+INFO :      test accuracy on global testset: 0.5547
+INFO :      test accuracy on client1 testset: 0.5531
+INFO :      test accuracy on client2 testset: 0.5528
+INFO :      test accuracy on client3 testset: 0.5591
+
+INFO :      [ROUND 2]
+
+INFO :      test accuracy on global testset: 0.5053
+INFO :      test accuracy on client1 testset: 0.4977
+INFO :      test accuracy on client2 testset: 0.5004
+INFO :      test accuracy on client3 testset: 0.5097
+
+INFO :      [ROUND 3]
+
+INFO :      test accuracy on global testset: 0.5053
+INFO :      test accuracy on client1 testset: 0.4977
+INFO :      test accuracy on client2 testset: 0.5004
+INFO :      test accuracy on client3 testset: 0.5097
+
+INFO :      [ROUND 4]
+
+INFO :      test accuracy on global testset: 0.6541
+INFO :      test accuracy on client1 testset: 0.6480
+INFO :      test accuracy on client2 testset: 0.6568
+INFO :      test accuracy on client3 testset: 0.6571
+
+INFO :      [ROUND 5]
+
+INFO :      test accuracy on global testset: 0.6084
+INFO :      test accuracy on client1 testset: 0.6071
+INFO :      test accuracy on client2 testset: 0.6151
+INFO :      test accuracy on client3 testset: 0.6027
+
+INFO :      [ROUND 6]
+
+INFO :      test accuracy on global testset: 0.6697
+INFO :      test accuracy on client1 testset: 0.6631
+INFO :      test accuracy on client2 testset: 0.6763
+INFO :      test accuracy on client3 testset: 0.6587
+
+INFO :      [ROUND 7]
+
+INFO :      test accuracy on global testset: 0.7191
+INFO :      test accuracy on client1 testset: 0.7160
+INFO :      test accuracy on client2 testset: 0.7325
+INFO :      test accuracy on client3 testset: 0.7144
+
+INFO :      [ROUND 8]
+
+INFO :      test accuracy on global testset: 0.7114
+INFO :      test accuracy on client1 testset: 0.7103
+INFO :      test accuracy on client2 testset: 0.7103
+INFO :      test accuracy on client3 testset: 0.7073
+
+INFO :      [ROUND 9]
+
+INFO :      test accuracy on global testset: 0.7217
+INFO :      test accuracy on client1 testset: 0.7177
+INFO :      test accuracy on client2 testset: 0.7273
+INFO :      test accuracy on client3 testset: 0.7226
+
+INFO :      [ROUND 10]
+
+INFO :      test accuracy on global testset: 0.7162
+INFO :      test accuracy on client1 testset: 0.7177
+INFO :      test accuracy on client2 testset: 0.7133
+INFO :      test accuracy on client3 testset: 0.7136
+INFO :
+INFO :      [SUMMARY]
+INFO :      Run finished 10 round(s) in 62.50s
+INFO :          History (loss, distributed):
+INFO :                  round 1: 0.8536765972773234
+INFO :                  round 2: 1.0501412947972615
+INFO :                  round 3: 0.7609966595967611
+INFO :                  round 4: 0.6285169919331869
+INFO :                  round 5: 0.6300119956334432
+INFO :                  round 6: 0.6053977211316427
+INFO :                  round 7: 0.5846073428789774
+INFO :                  round 8: 0.5832764108975729
+INFO :                  round 9: 0.5757580995559692
+INFO :                  round 10: 0.5779939691225687
