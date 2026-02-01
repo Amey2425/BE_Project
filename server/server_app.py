@@ -5,7 +5,7 @@ from flwr.common import ndarrays_to_parameters
 from dotenv import load_dotenv
 
 from common.network import NeuralNetworkAlgo
-from common.config import NUM_CLIENTS, ROUNDS
+from common.config import NUM_CLIENTS, ROUNDS, get_input_dim
 from .evaluator import get_evaluate_fn
 
 # Load Env
@@ -20,7 +20,7 @@ CLIENT_TESTS = {
 }
 
 def main():
-    model = NeuralNetworkAlgo(input_dim=12)
+    model = NeuralNetworkAlgo(input_dim=get_input_dim())
     initial_parameters = ndarrays_to_parameters(model.get_weights())
 
     strategy = FedAvg(
@@ -42,7 +42,7 @@ def main():
 
     # --- FINAL SUMMARY REPORT ---
     print("\n" + "="*45)
-    print(" 📋 FEDERATED LEARNING FINAL SUMMARY REPORT")
+    print(" FEDERATED LEARNING FINAL SUMMARY REPORT")
     print("="*45)
 
     # 1. Process Global Accuracy
@@ -52,14 +52,14 @@ def main():
         final_round, final_acc = acc_list[-1]
         best_round, best_acc = max(acc_list, key=lambda x: x[1])
 
-        print(f"✅ Rounds Completed:   {final_round}")
-        print(f"🎯 Final Global Acc:   {final_acc*100:.2f}%")
-        print(f"🏆 Best Global Acc:    {best_acc*100:.2f}% (at Round {best_round})")
+        print(f"Rounds Completed:   {final_round}")
+        print(f"Final Global Acc:   {final_acc*100:.2f}%")
+        print(f"Best Global Acc:    {best_acc*100:.2f}% (at Round {best_round})")
     
     # 2. Process Global Loss
     if history.losses_centralized:
         final_loss = history.losses_centralized[-1][1]
-        print(f"📉 Final Global Loss:  {final_loss:.4f}")
+        print(f"Final Global Loss:  {final_loss:.4f}")
 
     print("="*45 + "\n")
 

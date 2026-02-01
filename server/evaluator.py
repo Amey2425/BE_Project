@@ -1,10 +1,11 @@
 from logging import INFO
 from flwr.common.logger import log
 from common.network import NeuralNetworkAlgo
+from common.config import get_input_dim
 
 def get_evaluate_fn(global_test_path, client_paths):
     def evaluate(server_round, parameters, config):
-        model = NeuralNetworkAlgo(input_dim=12) 
+        model = NeuralNetworkAlgo(input_dim=get_input_dim()) 
         model.set_weights(parameters)
 
         # 1. Global Evaluation - Capture BOTH loss and accuracy
@@ -12,7 +13,7 @@ def get_evaluate_fn(global_test_path, client_paths):
         
         # 2. Structured Logging for better visibility during the run
         log(INFO, f"\n" + "-"*40)
-        log(INFO, f"🌐 ROUND {server_round} GLOBAL EVALUATION")
+        log(INFO, f"ROUND {server_round} GLOBAL EVALUATION")
         log(INFO, f"   Acc: {acc_global:.4f} | Loss: {loss_global:.4f}")
         
         for name, path in client_paths.items():

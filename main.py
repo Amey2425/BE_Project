@@ -9,7 +9,6 @@ def run_simulation():
     current_os = platform.system()
     project_root = os.path.abspath(os.getcwd())
     
-    # We clean the commands to be single-line strings to avoid newline errors
     commands = [
         ("SERVER", f'"{python_exec}" -m server.server_app'),
         ("CLIENT-1", f'"{python_exec}" -m client.client_app --id 1'),
@@ -17,33 +16,25 @@ def run_simulation():
         ("CLIENT-3", f'"{python_exec}" -m client.client_app --id 3 --personalize'),
     ]
 
-    print(f"🚀 Detected OS: {current_os}")
-    print(f"📂 Project Root: {project_root}")
-
     for name, cmd in commands:
         if current_os == "Windows":
-            # Windows 'start' uses the first quoted string as the Title
-            # We use /k to keep the window open after execution
-            subprocess.Popen(f'start "{name}" cmd /k "{cmd}"', shell=True)
+            # Set PYTHONPATH so modules are found correctly on Windows
+            full_cmd = f'set PYTHONPATH={project_root} && {cmd}'
+            subprocess.Popen(f'start "{name}" cmd /k "{full_cmd}"', shell=True)
         
         elif current_os == "Linux":
-            # Using double quotes for PYTHONPATH to handle spaces in folder names
             full_cmd = f'export PYTHONPATH=$PYTHONPATH:"{project_root}"; {cmd}'
+            # Attempt to use x-terminal-emulator as a more generic option than konsole
+            term = "x-terminal-emulator" if subprocess.run(["which", "x-terminal-emulator"], capture_output=True).returncode == 0 else "konsole"
             
-            print(f"📡 Launching {name} in Konsole...")
             subprocess.Popen([
-                "konsole", 
-                "--title", name,        # Sets the window/tab name
-                "--noclose",            # Keeps window open on exit
-                "--workdir", project_root, 
-                "-e", "bash", "-c", full_cmd
+                term, "-e", "bash", "-c", f"{full_cmd}; exec bash"
             ])
         
-        # Give the server a head start
         if name == "SERVER":
-            time.sleep(5)
+            time.sleep(2)
 
-    print("✅ All terminals launched. Monitor windows for logs.")
+    print("All terminals launched. Monitor windows for logs.")
 
 if __name__ == "__main__":
     run_simulation()

@@ -1,0 +1,28 @@
+# --- Python / Environment ---
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+
+# --- Machine Learning / Data ---
+# Exclude the actual datasets to keep the repo light
+data/*.csv
+# Exclude the scaler and any trained model weights
+preprocessing/scaler.pkl
+*.h5
+*.keras
+*.tflite
+
+# --- Logs & OS ---
+*.log
+.DS_Store
+Thumbs.db
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.swp

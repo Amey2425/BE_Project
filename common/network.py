@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import layers, regularizers
 from .classification_base import ClassificationAlgo
+from .config import L2_NORM_CLIP, NOISE_MULTIPLIER, NUM_MICROBATCHES
 
 class NeuralNetworkAlgo(ClassificationAlgo):
     def __init__(self, input_dim):
@@ -8,7 +9,9 @@ class NeuralNetworkAlgo(ClassificationAlgo):
         self.model = self._build_model()
 
     def _build_model(self):
-        opt = tf.keras.optimizers.Adam(learning_rate=0.001)
+        opt = tf.keras.optimizers.Adam(learning_rate=0.001)         # normal optimizer
+        loss_func = "binary_crossentropy"                              # loss function
+
         
         model = tf.keras.Sequential([
             layers.Input(shape=(self.input_dim,)),
@@ -28,7 +31,7 @@ class NeuralNetworkAlgo(ClassificationAlgo):
             layers.Dense(1, activation="sigmoid")
         ])
 
-        model.compile(optimizer=opt, loss="binary_crossentropy", metrics=["accuracy"])
+        model.compile(optimizer=opt, loss=loss_func, metrics=["accuracy"])
         return model
 
     def test(self, path):
